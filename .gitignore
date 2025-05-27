@@ -402,8 +402,6 @@ FodyWeavers.xsd
 
 # DX Library
 dxlib/
-dxlib/*
 
 # Rider
-.idea/.idea.Perspective/.idea/
-.idea/.idea.Perspective/.idea/*
+.idea/
