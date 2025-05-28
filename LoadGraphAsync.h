@@ -7,7 +7,6 @@ using Task = TaskSimple::Task;
 // TaskSimple.h ‚Å include ‚µ‚Ä‚¢‚È‚¢‚à‚Ì‚ð’Ç‰Á
 #include <optional>
 #include <stdexcept> // std::runtime_error
-#include <exception> // std::exception_ptr, std::current_exception, std::rethrow_exception
 #else
 #include "TaskInt.h"
 using Task = TaskInt::Task;
