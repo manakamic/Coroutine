@@ -52,14 +52,14 @@ int CALLBACK WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     auto index = 0;
     auto input_space = 0;
     auto counter = 0;
-    auto str_color = GetColor(255, 255, 255);
+    const auto str_color = GetColor(255, 255, 255);
     // メインループ内をスッキリさせる為にキー入力の処理はラムダで行う
     auto input_process = [&index, &input_space, &handles]() -> bool {
         if (CheckHitKey(KEY_INPUT_ESCAPE)) {
             return false;
         }
 
-        auto now_space = CheckHitKey(KEY_INPUT_SPACE);
+        const auto now_space = CheckHitKey(KEY_INPUT_SPACE);
 
         // 単なるスペースキーのエッジ処理
         if (input_space == 0 && now_space == 1) {
@@ -76,7 +76,7 @@ int CALLBACK WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     };
 
     while (ProcessMessage() != -1) {
-        auto loading = handles.size() != file_paths.size();
+        const auto loading = handles.size() != file_paths.size();
 
         if (loading) {
             if (Coroutine::Process()) {
@@ -100,7 +100,7 @@ int CALLBACK WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
             DrawExtendGraph(0, 0, 1024, 1024, handles[index], FALSE);
         }
 
-        // loadinf 中でも counter が進むので非同期ロードを確認できる
+        // loading 中でも counter が進むので非同期ロードを確認できる
         DrawFormatString(0, 0, str_color, _T("Frame[%d]"), counter);
         DrawFormatString(0, 32, str_color, _T("Loaded[%d] : Index[%d]"), (0 == loading), index);
         ScreenFlip();
